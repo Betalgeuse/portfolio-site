@@ -1,4 +1,4 @@
-// Smooth scrolling for navigation links
+// Smooth scrolling for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -8,39 +8,24 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Navbar scroll effect
-const header = document.querySelector('header');
-let lastScrollY = window.scrollY;
+// Animation on scroll (Intersection Observer)
+const observerOptions = {
+    threshold: 0.1
+};
 
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 100) {
-        header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.3)';
-    } else {
-        header.style.boxShadow = 'none';
-    }
-});
-
-// Simple mobile menu toggle (can be expanded)
-const hamburger = document.querySelector('.hamburger');
-const navLinks = document.querySelector('.nav-links');
-
-if (hamburger) {
-    hamburger.addEventListener('click', () => {
-        // Toggle mobile menu visibility
-        // Ideally add a class to nav-links to show/hide
-        // For simplicity in this basic setup:
-        if (navLinks.style.display === 'flex') {
-            navLinks.style.display = 'none';
-        } else {
-            navLinks.style.display = 'flex';
-            navLinks.style.flexDirection = 'column';
-            navLinks.style.position = 'absolute';
-            navLinks.style.top = '70px';
-            navLinks.style.right = '0';
-            navLinks.style.backgroundColor = '#112240';
-            navLinks.style.width = '100%';
-            navLinks.style.padding = '1rem';
-            navLinks.style.textAlign = 'center';
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
         }
     });
-}
+}, observerOptions);
+
+document.querySelectorAll('.timeline-item').forEach(item => {
+    // Reset initial state for JS animation
+    item.style.opacity = '0';
+    item.style.transform = 'translateY(20px)';
+    item.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+    observer.observe(item);
+});
