@@ -39,7 +39,7 @@ body {
     width: 100%;
     height: 100%;
     border: none;
-    transform: scale(1.4) translateX(15%); 
+    transform: scale(1.4) translateX(10%); 
     transform-origin: center center;
     pointer-events: auto; /* Enable interaction with 3D model */
 }
@@ -289,4 +289,24 @@ footer {
     .timeline-item:nth-child(even) .timeline-dot {
         left: -8px;
     }
+}
+
+.download-btn {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    font-weight: 500;
+    transition: all 0.3s;
+    backdrop-filter: blur(5px);
+}
+
+.download-btn:hover {
+    background: #fff;
+    color: #000;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
 }
