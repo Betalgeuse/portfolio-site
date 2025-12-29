@@ -1,0 +1,403 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Betalgeuse | AI Orchestrator">
+	<!-- 3D Background (Fixed) -->
+	<div class="spline-container">
+		<iframe src='https://my.spline.design/threadsfeatureheaderanimation-eY6uWWOiW8HYsBQgpM5BgkBU/' frameborder='0' title="3D Spline Animation"></iframe>
+	</div>
+
+	<!-- Scrollable Content -->
+	<div class="content-wrapper">
+		<header>
+			<nav>
+				<div class="logo">Betalgeuse</div>
+				<ul>
+					<li><a href="https://github.com/Betalgeuse" target="_blank">GitHub</a></li>
+					<li><a href="#timeline">Timeline</a></li>
+				</ul>
+			</nav>
+		</header>
+
+		<!-- Hero Section (Spacer for 3D view) -->
+		<section class="hero">
+			<div class="scroll-indicator">
+				<span>Scroll to explore</span>
+				<div class="arrow">↓</div>
+			</div>
+		</section>
+
+		<!-- Timeline Section -->
+		<section id="timeline" class="timeline-section">
+			<h2 class="section-title">Journey</h2>
+			
+			<div class="download-container">
+				<a href="/portfolio-site/resume.pdf" download class="download-btn">Download Resume PDF</a>
+			</div>
+			
+			<div class="timeline">
+				
+				<!-- Experience -->
+				<div class="timeline-item">
+					<div class="timeline-dot"></div>
+					<div class="timeline-content glass-box">
+						<span class="date">May 2025 - Dec 2025</span>
+						<h3>Vibers AI</h3>
+						<h4>Customer Success Owner</h4>
+						<p>Secured key enterprise accounts, contributed to 1.1B KRW seed funding, and built custom GenAI pipelines for marketing & e-commerce.</p>
+					</div>
+				</div>
+
+				<div class="timeline-item">
+					<div class="timeline-dot"></div>
+					<div class="timeline-content glass-box">
+						<span class="date">May 2023 - Aug 2023</span>
+						<h3>BioResearch AI</h3>
+						<h4>Research Analyst Intern</h4>
+						<p>Developed NLP-based pharma research platform and analyzed global market data to bridge academia-industry gaps.</p>
+					</div>
+				</div>
+
+				<div class="timeline-item">
+					<div class="timeline-dot"></div>
+					<div class="timeline-content glass-box">
+						<span class="date">July 2022 - Sep 2022</span>
+						<h3>TRIDGE</h3>
+						<h4>Data Science Intern</h4>
+						<p>Expanded agricultural data infrastructure and enhanced anomaly detection using Google Earth Engine.</p>
+					</div>
+				</div>
+
+				<!-- Education -->
+				<div class="timeline-item">
+					<div class="timeline-dot edu"></div>
+					<div class="timeline-content glass-box">
+						<span class="date">Expected 2027</span>
+						<h3>Seoul National University</h3>
+						<h4>B.S. Crop Science & Biotech | B.B.A Entrepreneurship</h4>
+						<p>GPA: 3.78/4.30. Relevant Coursework: Startup Web Programming, Regression Analysis, Creativity & Innovation.</p>
+					</div>
+				</div>
+
+				<div class="timeline-item">
+					<div class="timeline-dot edu"></div>
+					<div class="timeline-content glass-box">
+						<span class="date">2018 - 2021</span>
+						<h3>Gwangju Science Academy</h3>
+						<h4>Gifted Education</h4>
+						<p>Focus on fundamental science and research methodologies.</p>
+					</div>
+				</div>
+
+			</div>
+
+			<footer>
+				<p>&copy; 2025 Sanghyuk Lee (Betalgeuse).</p>
+			</footer>
+		</section>
+	</div>
+</Layout>
+
+<script>
+	// Animation on scroll (Intersection Observer)
+	const observerOptions = {
+		threshold: 0.1
+	};
+
+	const observer = new IntersectionObserver((entries) => {
+		entries.forEach(entry => {
+			if (entry.isIntersecting) {
+				entry.target.classList.add('visible');
+			}
+		});
+	}, observerOptions);
+
+	document.querySelectorAll('.timeline-item').forEach(item => {
+		observer.observe(item);
+	});
+</script>
+
+<style>
+	/* Fixed 3D Background */
+	.spline-container {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100vh;
+		z-index: -1;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		pointer-events: none; 
+	}
+
+	.spline-container iframe {
+		width: 100%;
+		height: 100%;
+		border: none;
+		transform: scale(1.4) translateX(13%); 
+		transform-origin: center center;
+		pointer-events: auto; 
+	}
+
+	/* Header */
+	header {
+		padding: 2rem 4rem;
+		position: fixed;
+		top: 0;
+		width: 100%;
+		z-index: 10;
+		transition: background 0.3s;
+	}
+
+	nav {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.logo {
+		font-size: 1.5rem;
+		font-weight: 700;
+		backdrop-filter: blur(10px);
+		background: rgba(255, 255, 255, 0.05);
+		padding: 0.5rem 1rem;
+		border-radius: 8px;
+		border: 1px solid var(--glass-border);
+	}
+
+	nav ul {
+		display: flex;
+		gap: 2rem;
+		list-style: none;
+	}
+
+	nav a {
+		color: var(--text-color);
+		text-decoration: none;
+		font-weight: 500;
+		opacity: 0.8;
+	}
+
+	/* Hero Section */
+	.hero {
+		height: 100vh; 
+		display: flex;
+		align-items: flex-end;
+		justify-content: center;
+		padding-bottom: 3rem;
+		background: linear-gradient(to top, rgba(10,10,10,0.8), transparent 20%);
+	}
+
+	.scroll-indicator {
+		text-align: center;
+		opacity: 0.8;
+		animation: bounce 2s infinite;
+		text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+	}
+
+	.scroll-indicator span {
+		display: block;
+		margin-bottom: 0.5rem;
+		font-size: 0.9rem;
+		letter-spacing: 1px;
+		text-transform: uppercase;
+	}
+
+	.arrow {
+		font-size: 1.5rem;
+	}
+
+	@keyframes bounce {
+		0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+		40% {transform: translateY(-10px);}
+		60% {transform: translateY(-5px);}
+	}
+
+	/* Timeline Section */
+	.timeline-section {
+		padding: 6rem 2rem;
+		min-height: 100vh;
+		background: linear-gradient(to bottom, rgba(10,10,10,0.8) 0%, rgba(10,10,10,0.95) 100%);
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		backdrop-filter: blur(3px);
+	}
+
+	.section-title {
+		font-size: 3rem;
+		margin-bottom: 2rem;
+		text-align: center;
+		background: linear-gradient(to right, #ffffff, #a5b4fc);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+
+	.download-container {
+		margin-bottom: 3rem;
+		text-align: center;
+	}
+
+	.download-btn {
+		display: inline-block;
+		padding: 0.8rem 1.5rem;
+		background: rgba(255, 255, 255, 0.1);
+		color: #fff;
+		text-decoration: none;
+		border-radius: 50px;
+		border: 1px solid rgba(255, 255, 255, 0.2);
+		font-weight: 500;
+		transition: all 0.3s;
+		backdrop-filter: blur(5px);
+	}
+
+	.download-btn:hover {
+		background: #fff;
+		color: #000;
+		transform: translateY(-2px);
+		box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
+	}
+
+	.timeline {
+		position: relative;
+		max-width: 800px;
+		width: 100%;
+		padding: 2rem 0;
+	}
+
+	.timeline::after {
+		content: '';
+		position: absolute;
+		width: 2px;
+		background: var(--timeline-line);
+		top: 0;
+		bottom: 0;
+		left: 20px; 
+		margin-left: -1px;
+	}
+
+	.timeline-item {
+		padding: 10px 40px;
+		position: relative;
+		background-color: inherit;
+		width: 100%;
+		margin-bottom: 3rem;
+		opacity: 0; 
+		transform: translateY(20px);
+		transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+	}
+
+	.timeline-item.visible {
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	/* Dot */
+	.timeline-dot {
+		position: absolute;
+		width: 16px;
+		height: 16px;
+		left: 12px; 
+		background-color: var(--accent-color);
+		border: 2px solid #fff;
+		top: 22px;
+		border-radius: 50%;
+		z-index: 1;
+		box-shadow: 0 0 10px var(--accent-color);
+	}
+
+	.timeline-dot.edu {
+		background-color: #ff7675;
+		box-shadow: 0 0 10px #ff7675;
+	}
+
+	/* Glass Box */
+	.glass-box {
+		padding: 2rem;
+		background: var(--glass-bg);
+		border-radius: 16px;
+		border: 1px solid var(--glass-border);
+		backdrop-filter: blur(15px);
+		box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+		transition: transform 0.3s;
+	}
+
+	.glass-box:hover {
+		transform: translateY(-5px);
+		background: rgba(40, 40, 40, 0.9);
+	}
+
+	.date {
+		display: inline-block;
+		margin-bottom: 0.5rem;
+		font-size: 0.85rem;
+		opacity: 0.7;
+		font-weight: 500;
+		letter-spacing: 0.5px;
+		color: #a5b4fc;
+	}
+
+	.timeline-item h3 {
+		margin-bottom: 0.2rem;
+		font-size: 1.5rem;
+		color: #fff;
+	}
+
+	.timeline-item h4 {
+		margin-bottom: 1rem;
+		font-size: 1.1rem;
+		color: var(--accent-color);
+		font-weight: 500;
+	}
+
+	.timeline-item.edu h4 {
+		color: #ff7675;
+	}
+
+	.timeline-item p {
+		line-height: 1.6;
+		opacity: 0.9;
+		font-size: 0.95rem;
+		color: #e0e0e0;
+	}
+
+	footer {
+		margin-top: 4rem;
+		opacity: 0.5;
+		font-size: 0.9rem;
+	}
+
+	@media (min-width: 768px) {
+		.timeline::after {
+			left: 50%;
+		}
+		
+		.timeline-item {
+			width: 50%;
+		}
+		
+		.timeline-item:nth-child(odd) {
+			left: 0;
+			text-align: right;
+			padding-right: 50px;
+			padding-left: 0;
+		}
+		
+		.timeline-item:nth-child(even) {
+			left: 50%;
+			padding-left: 50px;
+		}
+
+		.timeline-item:nth-child(odd) .timeline-dot {
+			left: auto;
+			right: -8px;
+		}
+		
+		.timeline-item:nth-child(even) .timeline-dot {
+			left: -8px;
+		}
+	}
+</style>
